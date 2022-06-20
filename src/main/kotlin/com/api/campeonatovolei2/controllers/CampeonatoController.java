@@ -2,6 +2,7 @@ package com.api.campeonatovolei2.controllers;
 
 import com.api.campeonatovolei2.dtos.CriarCampeonatoDto;
 import com.api.campeonatovolei2.dtos.FinalizarCampeonatoDto;
+import com.api.campeonatovolei2.interfaces.CampeonatoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

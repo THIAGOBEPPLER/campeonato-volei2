@@ -1,5 +1,7 @@
 package com.api.campeonatovolei2.controllers;
 
+import com.api.campeonatovolei2.dtos.TimeDto;
+import com.api.campeonatovolei2.interfaces.TimeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
