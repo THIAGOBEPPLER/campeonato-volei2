@@ -5,8 +5,8 @@ import com.api.campeonatovolei2.entities.TimeModel
 import java.util.*
 
 interface TimeService {
-    fun adicionarTime(time: TimeDto?): TimeModel?
-    fun listarTimes(): ArrayList<TimeModel?>?
+    fun adicionarTime(time: TimeDto): TimeModel?
+    fun listarTimes(): ArrayList<TimeModel>?
 }
 
 
