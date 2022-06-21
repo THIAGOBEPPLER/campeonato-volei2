@@ -1,7 +1,7 @@
 package com.api.campeonatovolei2.entities
 
 import javax.persistence.*
-
+@Entity(name = "Time")
 class TimeModel {
 
     @Id
