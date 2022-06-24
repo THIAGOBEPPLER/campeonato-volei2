@@ -16,7 +16,7 @@ import java.util.stream.Collectors
 
 @Suppress("UNCHECKED_CAST", "IMPLICIT_BOXING_IN_IDENTITY_EQUALS")
 @Service
-abstract class JogoServiceImpl : JogoService {
+class JogoServiceImpl : JogoService {
     @Autowired
     var jogoRepository: JogoRepository? = null
 

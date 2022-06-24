@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service
 import java.util.stream.Collectors
 
 @Service
-abstract class CampeonatoServiceImpl : CampeonatoService {
+class CampeonatoServiceImpl : CampeonatoService {
     @Autowired
     var campeonatoRepository: CampeonatoRepository? = null
 

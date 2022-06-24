@@ -4,7 +4,7 @@ class TimeDto {
     var nome: String? = null
 
     constructor() {}
-    constructor(id: Int?, nome: String?) {
+    constructor(nome: String?) {
         this.nome = nome
     }
 }
