@@ -32,9 +32,14 @@ class CampeonatoServiceImpl : CampeonatoService {
 
         for (time in campeonato.times!!) {
             val timeModel = timeRepository!!.findById(time).orElse(null)
-            if (timeModel != null) {
-                listaTimes.add(timeModel)
-            }
+                ?: throw IllegalArgumentException("Lista de times invalida.")
+
+            listaTimes.add(timeModel)
+
+        }
+
+        if(listaTimes.count() < 2){
+            throw IllegalArgumentException("Campeonato não pode ter menos de 2 times")
         }
 
         campeonatoModel.nome = campeonato.nome
