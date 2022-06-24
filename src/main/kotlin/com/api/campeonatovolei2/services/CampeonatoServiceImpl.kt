@@ -35,7 +35,6 @@ class CampeonatoServiceImpl : CampeonatoService {
                 ?: throw IllegalArgumentException("Lista de times invalida.")
 
             listaTimes.add(timeModel)
-
         }
 
         if(listaTimes.count() < 2){

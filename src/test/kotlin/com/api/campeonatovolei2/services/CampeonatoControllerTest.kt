@@ -59,7 +59,7 @@ class CampeonatoControllerTest {
     }
 
     @Test
-    fun testeCriarCampeonato_(){
+    fun testeCriarCampeonato_ListaTimesInvalida(){
 
         val times = listOf(1, 2121)
 
@@ -74,6 +74,24 @@ class CampeonatoControllerTest {
 
         Assertions.assertEquals("Lista de times invalida.", erro.message)
     }
+
+    @Test
+    fun testeCriarCampeonato_ListaTimesMenorQue2(){
+
+        val times = listOf(1)
+
+        val campeonatoDto = CriarCampeonatoDto(
+            "Campeonato teste",
+            times
+        )
+
+        val erro = Assertions.assertThrows(
+            java.lang.IllegalArgumentException::class.java
+        ) { campeonatoService?.criarCampeonato(campeonatoDto)}
+
+        Assertions.assertEquals("Campeonato não pode ter menos de 2 times", erro.message)
+    }
+
 
     @Name("teste finalizarCampeonato(); Should Throw IllegalArgumentsException; When Campeonato Inexistente")
     @Test
