@@ -19,12 +19,6 @@ class CampeonatoControllerTest {
     @Autowired
     var campeonatoService: CampeonatoService? = null
 
-//    @Autowired
-//    lateinit var mockMvc: MockMvc
-
-    @Mock
-    var timeRepository: TimeRepository? = null
-
     @Test
     fun testeListarCampeonatos(){
 
@@ -35,27 +29,13 @@ class CampeonatoControllerTest {
     }
 
     @Test
-    fun testeTabelaNula(){
+    fun testeTabelaCampeonatoNaoCadastrado(){
 
-        val tabelaNula = campeonatoService?.tabela(100000)
+        val erro = Assertions.assertThrows(
+            java.lang.IllegalArgumentException::class.java
+        ) { campeonatoService?.tabela(100000) }
 
-        Assertions.assertNull(tabelaNula)
-    }
-
-    @Test
-    fun testeCriarCampeonatoInexistente(){
-
-        val times = listOf(10000, 100000)
-
-        val campeonatoDto = CriarCampeonatoDto(
-            "Campeonato teste",
-            times
-
-        )
-
-        val campeonatoNulo = campeonatoService?.criarCampeonato(campeonatoDto)
-
-        Assertions.assertNull(campeonatoNulo)
+        Assertions.assertEquals("Campeonato não cadastrado", erro.message)
     }
 
     @Test
