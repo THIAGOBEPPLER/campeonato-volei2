@@ -29,7 +29,7 @@ class CampeonatoControllerTest {
     }
 
     @Test
-    fun testeTabelaCampeonatoNaoCadastrado(){
+    fun testeTabela_CampeonatoNaoCadastrado(){
 
         val erro = Assertions.assertThrows(
             java.lang.IllegalArgumentException::class.java
@@ -72,10 +72,9 @@ class CampeonatoControllerTest {
         Assertions.assertEquals("Campeonato não pode ter menos de 2 times", erro.message)
     }
 
-
     @Name("teste finalizarCampeonato(); Should Throw IllegalArgumentsException; When Campeonato Inexistente")
     @Test
-    fun testeFinalizarCampeonatoInexistente(){
+    fun testeFinalizarCampeonato_Inexistente(){
 
         val finalizarCampeonatoDto = FinalizarCampeonatoDto(
             10000
@@ -86,6 +85,36 @@ class CampeonatoControllerTest {
         ) { campeonatoService?.finalizarCampeonato(finalizarCampeonatoDto) }
 
         Assertions.assertEquals("Campeonato não cadastrado", erro.message)
+    }
+
+    @Test
+    fun testeFinalizarCampeonato_JogosEmAndamento(){ // TODO: ainda não testado, depende da criação dos jogos
+
+        val finalizarCampeonatoDto = FinalizarCampeonatoDto(
+            10000 //
+        )
+
+        val erro = Assertions.assertThrows(
+            java.lang.IllegalArgumentException::class.java
+        ) { campeonatoService?.finalizarCampeonato(finalizarCampeonatoDto) }
+
+        Assertions.assertEquals("Esse campeonato possui jogos em andamento", erro.message)
+
+    }
+
+    @Test
+    fun testeFinalizarCampeonato_CampeonatoJaFinalizado(){
+
+        val finalizarCampeonatoDto = FinalizarCampeonatoDto(
+            12
+        )
+
+        val erro = Assertions.assertThrows(
+            java.lang.IllegalArgumentException::class.java
+        ) { campeonatoService?.finalizarCampeonato(finalizarCampeonatoDto) }
+
+        Assertions.assertEquals("Campeonato já finalizado", erro.message)
+
     }
 
 }

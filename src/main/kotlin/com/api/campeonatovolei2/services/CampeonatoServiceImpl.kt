@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.util.stream.Collectors
 
+@Suppress("IMPLICIT_BOXING_IN_IDENTITY_EQUALS")
 @Service
 class CampeonatoServiceImpl : CampeonatoService {
     @Autowired
@@ -61,9 +62,13 @@ class CampeonatoServiceImpl : CampeonatoService {
 
         val jogos = jogoRepository!!.findByCampeonatoIdAndFinalizado(finalizarCampeonato.id!!, false)
 
-        require(jogos!!.isNotEmpty()) { "Esse campeonato possui jogos em andamento" }
+        if(jogos!!.isNotEmpty()){
+            throw IllegalArgumentException("Esse campeonato possui jogos em andamento" )
+        }
 
-        require(!campeonato.finalizado!!) { "Campeonato já finalizado" }
+        if(campeonato.finalizado === true){
+            throw IllegalArgumentException("Campeonato já finalizado" )
+        }
 
         campeonato.finalizado = true
         campeonatoRepository!!.save(campeonato)
