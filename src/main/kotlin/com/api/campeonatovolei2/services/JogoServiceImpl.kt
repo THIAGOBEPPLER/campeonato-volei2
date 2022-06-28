@@ -38,11 +38,11 @@ class JogoServiceImpl : JogoService {
         val times = campeonato.times
         val timesIds = times!!.stream().map(TimeModel::getId).collect(Collectors.toList())
 
-        if(timesIds.contains(jogoDto.timeId1)) {
+        if(!timesIds.contains(jogoDto.timeId1)) {
             throw IllegalArgumentException("Time1 não está nesse campeonato!")
         }
 
-        if(timesIds.contains(jogoDto.timeId2)) {
+        if(!timesIds.contains(jogoDto.timeId2)) {
             throw IllegalArgumentException("Time2 não está nesse campeonato!")
         }
 
