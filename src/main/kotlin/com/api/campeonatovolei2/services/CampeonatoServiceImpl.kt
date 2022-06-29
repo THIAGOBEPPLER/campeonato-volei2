@@ -13,6 +13,7 @@ import com.api.campeonatovolei2.repositories.TimeRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.util.stream.Collectors
+import javax.transaction.Transactional
 
 @Suppress("IMPLICIT_BOXING_IN_IDENTITY_EQUALS")
 @Service
@@ -53,6 +54,7 @@ class CampeonatoServiceImpl : CampeonatoService {
         return campeonatoRepository!!.findAll()
     }
 
+    @Transactional
     override fun finalizarCampeonato(finalizarCampeonato: FinalizarCampeonatoDto): MutableList<TabelaModel> {
 
         val id = finalizarCampeonato.id!!
@@ -117,10 +119,10 @@ class CampeonatoServiceImpl : CampeonatoService {
             }
 
             val tabelaTime = TabelaModel()
-            tabelaTime.jogos = numeroJogos as Int
-            tabelaTime.vitorias  = vitorias as Int
+            tabelaTime.jogos = numeroJogos.toInt()
+            tabelaTime.vitorias  = vitorias.toInt()
             tabelaTime.timeId =  time.getId()
-            tabelaTime.pontos = (vitorias as Int) * 3
+            tabelaTime.pontos = (vitorias.toInt()) * 3
             tabelaTime.saldo =  saldo
             tabela.add(tabelaTime)
         }

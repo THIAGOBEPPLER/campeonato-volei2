@@ -4,6 +4,7 @@ import com.api.campeonatovolei2.dtos.CriarCampeonatoDto
 import com.api.campeonatovolei2.dtos.FinalizarCampeonatoDto
 import com.api.campeonatovolei2.entities.CampeonatoModel
 import com.api.campeonatovolei2.interfaces.CampeonatoService
+import com.api.campeonatovolei2.repositories.CampeonatoRepository
 import jdk.jfr.Name
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
@@ -16,6 +17,10 @@ class CampeonatoControllerTest {
 
     @Autowired
     var campeonatoService: CampeonatoService? = null
+
+    @Autowired
+    var campeonatoRepository: CampeonatoRepository? = null
+
 
     @Test
     fun testeListarCampeonatos(){
@@ -112,6 +117,34 @@ class CampeonatoControllerTest {
         ) { campeonatoService?.finalizarCampeonato(finalizarCampeonatoDto) }
 
         Assertions.assertEquals("Campeonato já finalizado", erro.message)
+
+    }
+
+    @Test
+    fun testeFinalizarCampeonato_Funcionando(){
+
+        val times = listOf(1, 2)
+
+        val campeonatoDto = CriarCampeonatoDto(
+            "Campeonato teste",
+            times
+        )
+
+        val criarCampeonato = campeonatoService?.criarCampeonato(campeonatoDto)
+
+        val id = criarCampeonato?.id
+
+        val finalizarCampeonatoDto = FinalizarCampeonatoDto(
+            id
+        )
+
+        campeonatoService?.finalizarCampeonato(finalizarCampeonatoDto)
+
+        if (id != null){
+            val campeonatoFinalizado = campeonatoRepository?.findById(id)?.orElse(null)
+
+            Assertions.assertTrue(campeonatoFinalizado?.finalizado === true)
+        }
 
     }
 
