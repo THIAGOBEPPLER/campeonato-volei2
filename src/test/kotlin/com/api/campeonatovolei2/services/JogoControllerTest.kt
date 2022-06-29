@@ -59,7 +59,7 @@ class JogoControllerTest {
     }
 
     @Test
-    fun testeAtualizarPontuacao_JogoJaFinalizado(){ //TODO:Ainda deve ser testado
+    fun testeAtualizarPontuacao_JogoJaFinalizado(){
 
         val atualizarPontuacaoDto = AtualizarPontuacaoDto(
             23,
@@ -72,11 +72,6 @@ class JogoControllerTest {
 
         Assertions.assertEquals("Jogo já finalizado!", erro.message)
     }
-//    todo
-//    CriarJogo_TimeContraEleMesmo
-//    CriarJogo_CampeonatoNaoCadastrado
-//    CriarJogo_CampeonatoJaFinalizado
-//    CriarJogo_TimeJaEstaJogando
 
     @Test
     fun testeCriarJogo_TimeContraEleMesmo(){
@@ -111,7 +106,7 @@ class JogoControllerTest {
     }
 
     @Test
-    fun testeCriarJogo_CampeonatoJaFinalizado(){ //TODO:Ainda deve ser testado
+    fun testeCriarJogo_CampeonatoJaFinalizado(){
 
         val criarJogoDto = CriarJogoDto(
             13,
@@ -127,7 +122,7 @@ class JogoControllerTest {
     }
 
     @Test
-    fun testeCriarJogo_TimeJaEstaJogando(){ //TODO:Ainda deve ser testado
+    fun testeCriarJogo_TimeJaEstaJogando(){
 
         val criarJogoDto = CriarJogoDto(
             22,
@@ -143,7 +138,7 @@ class JogoControllerTest {
     }
 
     @Test
-    fun testeCriarJogo_TimeNaoEstaNoCampeonato(){ //TODO:Ainda deve ser testado
+    fun testeCriarJogo_TimeNaoEstaNoCampeonato(){
 
         val criarJogoDto = CriarJogoDto(
             22,
