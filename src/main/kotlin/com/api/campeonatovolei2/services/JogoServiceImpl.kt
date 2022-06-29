@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.util.*
 import java.util.stream.Collectors
+import javax.transaction.Transactional
 
 @Suppress("UNCHECKED_CAST", "IMPLICIT_BOXING_IN_IDENTITY_EQUALS")
 @Service
@@ -26,6 +27,7 @@ class JogoServiceImpl : JogoService {
     @Autowired
     var timeRepository: TimeRepository? = null
 
+    @Transactional
     override fun criarJogo(jogoDto: CriarJogoDto): Any {
 
         require(jogoDto.timeId1 != jogoDto.timeId2) { "Um time não pode jogar contra ele mesmo!" }

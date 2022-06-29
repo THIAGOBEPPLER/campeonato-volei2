@@ -62,7 +62,7 @@ class JogoControllerTest {
     fun testeAtualizarPontuacao_JogoJaFinalizado(){ //TODO:Ainda deve ser testado
 
         val atualizarPontuacaoDto = AtualizarPontuacaoDto(
-            10000,
+            23,
             1
         )
 
