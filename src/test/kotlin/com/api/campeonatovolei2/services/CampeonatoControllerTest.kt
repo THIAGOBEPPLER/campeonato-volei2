@@ -4,11 +4,9 @@ import com.api.campeonatovolei2.dtos.CriarCampeonatoDto
 import com.api.campeonatovolei2.dtos.FinalizarCampeonatoDto
 import com.api.campeonatovolei2.entities.CampeonatoModel
 import com.api.campeonatovolei2.interfaces.CampeonatoService
-import com.api.campeonatovolei2.repositories.TimeRepository
 import jdk.jfr.Name
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
-import org.mockito.Mock
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 
@@ -88,10 +86,10 @@ class CampeonatoControllerTest {
     }
 
     @Test
-    fun testeFinalizarCampeonato_JogosEmAndamento(){ // TODO: ainda não testado, depende da criação dos jogos
+    fun testeFinalizarCampeonato_JogosEmAndamento(){
 
         val finalizarCampeonatoDto = FinalizarCampeonatoDto(
-            10000 //
+            22
         )
 
         val erro = Assertions.assertThrows(
